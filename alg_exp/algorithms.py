@@ -27,13 +27,13 @@ class RANSAC:
         self.Y = Y
 
     def cal_feature_matching_result(self):
-        result = self.eng.RANSAC_alteration(matlab.double(self.X.tolist()), matlab.double(self.Y.tolist()), nargout=1)
+        result = self.eng.RANSAC_alteration(matlab.double(self.X.T.tolist()), matlab.double(self.Y.T.tolist()), nargout=1)
         result_1 = np.array(result).flatten()
         result_2 = np.array(result).flatten().astype(int)
         return result_2
 
-# 现在有
-class Algorithm_cal:
+# 现在有两种方法:LPM、RANSAC
+class Algorithm_Cal:
     def __init__(self, X, Y):
         self.X = X
         self.Y = Y
@@ -53,8 +53,7 @@ class Algorithm_cal:
 if __name__ == '__main__':
     from utils import load_dataset
     img_x, img_y, X, Y, ground_truth = load_dataset.load_mat("../data/demo_dataset/1001.mat")
-    algorithm_cal = Algorithm_cal(X, Y)
+    algorithm_cal = Algorithm_Cal(X, Y)
     result = algorithm_cal.cal_feature_matching_result('LPM')
-    print(result)
     result = algorithm_cal.cal_feature_matching_result('RANSAC')
-    print(result)
+
