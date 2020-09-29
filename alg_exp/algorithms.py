@@ -28,9 +28,8 @@ class RANSAC:
 
     def cal_feature_matching_result(self):
         result = self.eng.RANSAC_alteration(matlab.double(self.X.T.tolist()), matlab.double(self.Y.T.tolist()), nargout=1)
-        result_1 = np.array(result).flatten()
-        result_2 = np.array(result).flatten().astype(int)
-        return result_2
+        result = np.array(result).flatten().astype(int)
+        return result
 
 # 现在有两种方法:LPM、RANSAC
 class Algorithm_Cal:

@@ -26,7 +26,8 @@ class Feature_Matching_Quan_Exp:
             # inputting data
             algorithm_cal = algorithms.Algorithm_Cal(X, Y)
             for method in self.method_list:
-                # 计算不同方法给出
+                # 计算不同方法给出正确匹配
+                # computing true matches given by each algorithm
                 result = algorithm_cal.cal_feature_matching_result(method)
         return
 
